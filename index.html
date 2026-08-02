@@ -48,14 +48,18 @@
         .step { display: flex; align-items: center; background: var(--accent-light); padding: 1rem 1.2rem; border-radius: 8px; font-weight: 500; color: var(--primary); border: 1px solid #dbeafe; }
         .step-num { background: var(--accent); color: white; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 1.2rem; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; }
 
-        /* Research Study Elements */
-        .research-grid { display: flex; flex-direction: column; gap: 2rem; margin-top: 1.5rem; }
-        .study-row { display: flex; gap: 2rem; background: #fafafa; border-radius: 10px; padding: 1.5rem; border: 1px solid var(--card-border); align-items: center; }
-        @media (max-width: 768px) { .study-row { flex-direction: column; align-items: flex-start; } .study-img { width: 100% !important; height: 200px !important; } }
-        .study-img { width: 220px; height: 160px; background: #e2e8f0; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1; }
+        /* Detailed Research Section */
+        .research-container { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 1.5rem; }
+        .study-block { background: #fafafa; border-radius: 12px; border: 1px solid var(--card-border); padding: 2rem; }
+        .study-header { display: flex; gap: 1.5rem; align-items: center; border-bottom: 1px dashed var(--card-border); padding-bottom: 1rem; margin-bottom: 1rem; }
+        @media (max-width: 768px) { .study-header { flex-direction: column; align-items: flex-start; } .study-img { width: 100% !important; height: 180px !important; } }
+        .study-img { width: 180px; height: 130px; background: #e2e8f0; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1; }
         .study-img img { width: 100%; height: 100%; object-fit: cover; }
-        .study-info h3 { margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1.25rem; }
-        .study-tag { background: #e0f2fe; color: #0369a1; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
+        .study-title h3 { margin: 0 0 0.4rem 0; color: var(--primary); font-size: 1.3rem; }
+        .study-tag { background: #e0f2fe; color: #0369a1; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; }
+        
+        .study-details p { margin: 0.5rem 0; font-size: 0.95rem; }
+        .study-details strong { color: var(--primary); }
 
         /* Responsive Table */
         .table-container { overflow-x: auto; margin-top: 1.5rem; border-radius: 8px; border: 1px solid var(--card-border); }
@@ -123,18 +127,16 @@
             </div>
         </div>
 
-        <!-- NEW: Clinical & Scientific Research Foundations Section -->
+        <!-- Comprehensive Research Section -->
         <div class="card">
             <h2>📚 Key Clinical & Scientific Foundations</h2>
-            <p>The conceptual model of the BAIL platform is directly supported by recent global clinical trials and breakthrough scientific research datasets:</p>
+            <p>The conceptual model of the BAIL platform is directly validated and supported by these five high-impact scientific research frameworks:</p>
             
-            <div class="research-grid">
-                <!-- Research 1 -->
-                <div class="study-row">
-                    <div class="study-img">
-                        <!-- To add a real image, upload 'study1.jpg' to GitHub and change src="study1.jpg" -->
-                        <img src="https://placeholder.com" alt="HepAssis2 Phase 1 Trial Graph">
-                    </div>
-                    <div class="study-info">
-                        <span class="study-tag">CLINICAL TRIAL (PHASE I)</span>
-                        <h3>1. HepAssis2® Bioartificial Liver Support System</h3>
+            <div class="research-container">
+                
+                <!-- Study 1 -->
+                <div class="study-block">
+                    <div class="study-header">
+                        <div class="study-img">
+                            <img src="https://placeholder.com" alt="HepAssis2 System Diagram">
+                        </div>
