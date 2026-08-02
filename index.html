@@ -170,8 +170,9 @@
   @media (max-width:720px){ .study-row{grid-template-columns:1fr;} }
   .study-img{
     width:100%; height:150px; background:#fff; border-radius:10px; border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; gap:0.35rem;
   }
+  .icon-cap{font-size:0.68rem; color:var(--muted); font-style:italic;}
   .study-img img{width:100%; height:100%; object-fit:contain; padding:0.5rem;}
   .study-tag{
     display:inline-block; background:#e0f2fe; color:#0369a1; padding:0.22rem 0.65rem;
@@ -281,21 +282,21 @@
     <div class="kicker">How the platform is built</div>
     <div class="grid-3">
       <div class="module-box">
-        <div class="module-img"><img src="assets/layer1.png" alt="Living Hepatic Tissue Module diagram"></div>
+        <div class="module-img"><img src="assets/layer1.png" alt="Implantable liver device concept with hepatocyte module"></div>
         <div class="module-body">
           <h3>Layer 1 · Living Hepatic Tissue</h3>
           <p>Human iPSC-derived hepatocytes cultured within a biocompatible 3D scaffold to recreate the native liver microenvironment, enabling real-time detection of infected hepatocytes and continuous metabolic support.</p>
         </div>
       </div>
       <div class="module-box">
-        <div class="module-img"><img src="assets/layer2.png" alt="Immune Surveillance Module diagram"></div>
+        <div class="module-img"><img src="assets/layer2.png" alt="Engineered immune cell types used in the surveillance module"></div>
         <div class="module-body">
           <h3>Layer 2 · Immune Surveillance</h3>
           <p>Engineered Kupffer cells, NK cells, cytotoxic T cells, and macrophages detect infected hepatocytes, present antigens, and destroy infected cells while releasing antiviral mediators.</p>
         </div>
       </div>
       <div class="module-box">
-        <div class="module-img"><img src="assets/layer3.png" alt="Smart Therapeutic Control Module diagram"></div>
+        <div class="module-img"><img src="assets/layer3.png" alt="Biosensor, AI, microfluidic, and reservoir icon row"></div>
         <div class="module-body">
           <h3>Layer 3 · Smart Therapeutic Control</h3>
           <p>Integrated biosensors track viral load and inflammation. AI algorithms decide the optimal intervention, and microfluidic channels deliver immune modulators and cytokines locally.</p>
@@ -326,7 +327,16 @@
 
     <div class="research-grid">
       <div class="study-row">
-        <div class="study-img"><img src="assets/study2.png" alt="HepAssis2 bioartificial liver trial figure"></div>
+        <div class="study-img"><svg viewBox="0 0 120 120" width="86" height="86">
+          <circle cx="60" cy="60" r="54" fill="#eff6ff"/>
+          <rect x="32" y="46" width="56" height="34" rx="8" fill="none" stroke="#2563eb" stroke-width="3"/>
+          <path d="M32 56 h56 M32 70 h56" stroke="#2563eb" stroke-width="2" opacity="0.5"/>
+          <circle cx="44" cy="63" r="4" fill="#22d3ee"/>
+          <circle cx="60" cy="63" r="4" fill="#2563eb"/>
+          <circle cx="76" cy="63" r="4" fill="#22d3ee"/>
+          <path d="M60 46 V32 M52 32 h16" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <path d="M24 80 q36 24 72 0" stroke="#60a5fa" stroke-width="3" fill="none" opacity="0.6"/>
+        </svg><span class="icon-cap">Illustrative icon</span></div>
         <div class="study-info">
           <span class="study-tag">CLINICAL TRIAL · PHASE I (2026)</span>
           <h3>HepAssis2® Bioartificial Liver System</h3>
@@ -336,7 +346,14 @@
       </div>
 
       <div class="study-row">
-        <div class="study-img"><img src="assets/study3.png" alt="UTOpiA tandem circuit figure"></div>
+        <div class="study-img"><svg viewBox="0 0 120 120" width="86" height="86">
+          <circle cx="60" cy="60" r="54" fill="#ecfeff"/>
+          <circle cx="38" cy="46" r="12" fill="none" stroke="#0891b2" stroke-width="3"/>
+          <circle cx="82" cy="46" r="12" fill="none" stroke="#2563eb" stroke-width="3"/>
+          <path d="M38 58 V74 H82 V58" stroke="#2563eb" stroke-width="3" fill="none"/>
+          <rect x="46" y="74" width="28" height="16" rx="4" fill="none" stroke="#0891b2" stroke-width="3"/>
+          <path d="M38 46 h44" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3"/>
+        </svg><span class="icon-cap">Illustrative icon</span></div>
         <div class="study-info">
           <span class="study-tag">PRECLINICAL BREAKTHROUGH (2025)</span>
           <h3>The UTOpiA Tandem Circuit (Takebe Group)</h3>
@@ -346,7 +363,12 @@
       </div>
 
       <div class="study-row">
-        <div class="study-img"><img src="assets/study4.png" alt="Genetically engineered porcine liver figure"></div>
+        <div class="study-img"><svg viewBox="0 0 120 120" width="86" height="86">
+          <circle cx="60" cy="60" r="54" fill="#fef2f2"/>
+          <path d="M60 34 C40 34 30 50 32 66 C34 82 48 90 60 90 C72 90 86 82 88 66 C90 50 80 34 60 34 Z" fill="none" stroke="#dc2626" stroke-width="3"/>
+          <path d="M60 34 V26 M52 26 h16" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+          <path d="M46 58 q14 -10 28 0 M46 70 q14 10 28 0" stroke="#f87171" stroke-width="2.5" fill="none"/>
+        </svg><span class="icon-cap">Illustrative icon</span></div>
         <div class="study-info">
           <span class="study-tag">FDA-CLEARED TRIAL (2025)</span>
           <h3>Genetically Engineered Porcine Liver (Extracorporeal Bridging)</h3>
@@ -356,7 +378,15 @@
       </div>
 
       <div class="study-row">
-        <div class="study-img"><img src="assets/study5.png" alt="hiHep-BAL clinical device figure"></div>
+        <div class="study-img"><svg viewBox="0 0 120 120" width="86" height="86">
+          <circle cx="60" cy="60" r="54" fill="#f0fdf4"/>
+          <circle cx="45" cy="50" r="9" fill="none" stroke="#0f9d58" stroke-width="3"/>
+          <circle cx="68" cy="46" r="9" fill="none" stroke="#0f9d58" stroke-width="3"/>
+          <circle cx="56" cy="68" r="9" fill="none" stroke="#0f9d58" stroke-width="3"/>
+          <circle cx="78" cy="66" r="9" fill="none" stroke="#0f9d58" stroke-width="3"/>
+          <path d="M30 88 h60" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+          <path d="M40 88 v6 M60 88 v6 M80 88 v6" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+        </svg><span class="icon-cap">Illustrative icon</span></div>
         <div class="study-info">
           <span class="study-tag">CLINICAL-GRADE DEVICE (2023–2026)</span>
           <h3>Clinical-Grade hiHep-BAL Device</h3>
@@ -366,7 +396,7 @@
       </div>
 
       <div class="study-row">
-        <div class="study-img"><img src="assets/study1.png" alt="Hepatic immune microenvironment figure"></div>
+        <div class="study-img"><img src="assets/study_immune.png" alt="Hepatic immune microenvironment schematic from the poster" style="height:70%;"><span class="icon-cap">From your poster</span></div>
         <div class="study-info">
           <span class="study-tag">IMMUNOLOGY (2022)</span>
           <h3>Hepatic Immune Surveillance &amp; T-Cell Differentiation in HBV</h3>
