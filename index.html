@@ -1,332 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAIL: BioArtificial Immune Liver Project Website</title>
-    <style>
-        :root {
-            --primary: #0a192f;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --text: #334155;
-            --bg: #f8fafc;
-            --card-border: #e2e8f0;
-            --success: #166534;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
-            color: white;
-            padding: 4rem 1.5rem;
-            text-align: center;
-        }
-        h1 { margin: 0; font-size: 2.2rem; max-width: 900px; margin: 0 auto; line-height: 1.3; }
-        .subtitle { color: #38bdf8; font-size: 1.2rem; margin-top: 0.6rem; font-weight: 500; }
-        .authors { color: #94a3b8; margin-top: 1rem; font-style: italic; font-size: 1rem; }
-        .badge { background: #1e293b; color: #f8fafc; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; display: inline-block; margin-top: 0.6rem; letter-spacing: 0.5px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAIL: BioArtificial Immune Liver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#081428;
+    --navy-2:#0f2547;
+    --blue:#2563eb;
+    --blue-light:#60a5fa;
+    --cyan:#22d3ee;
+    --ink:#1e293b;
+    --muted:#64748b;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --border:#e6ebf2;
+    --success:#0f9d58;
+    --danger:#dc2626;
+    --radius:16px;
+    --shadow: 0 10px 30px -12px rgba(8,20,40,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+  }
+  h1,h2,h3{font-family:'Sora',sans-serif;}
 
-        main { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
-        .card { background: white; padding: 2.5rem; border-radius: 14px; border: 1px solid var(--card-border); margin-bottom: 2.5rem; box-shadow: 0 4px 15px rgba(10,25,47,0.04); transition: transform 0.2s ease; }
-        .card:hover { transform: translateY(-2px); }
-        h2 { color: var(--primary); border-bottom: 3px solid var(--accent-light); padding-bottom: 0.6rem; margin-top: 0; font-size: 1.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(8,20,40,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:0.9rem 1.5rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .brand{color:#fff; font-weight:800; font-size:1.05rem; letter-spacing:0.3px; white-space:nowrap;}
+  .brand span{color:var(--cyan);}
+  .nav-links{display:flex; gap:1.4rem; flex-wrap:wrap;}
+  .nav-links a{color:#c9d6ea; text-decoration:none; font-size:0.88rem; font-weight:500; transition:color .15s;}
+  .nav-links a:hover{color:#fff;}
 
-        /* Stat strip */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-        .stat-box { background: var(--accent-light); border: 1px solid #dbeafe; border-radius: 10px; padding: 1.2rem; text-align: center; }
-        .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
-        .stat-label { font-size: 0.85rem; color: var(--text); margin-top: 0.3rem; }
-        .root-cause { background: #fef2f2; border-left: 5px solid #dc2626; padding: 1rem 1.2rem; border-radius: 8px; margin-top: 1.5rem; color: #7f1d1d; }
-        .root-cause strong { color: #b91c1c; }
+  /* ---------- HERO ---------- */
+  header{
+    position:relative;
+    background:
+      radial-gradient(1100px 500px at 12% -10%, rgba(37,99,235,0.55), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(34,211,238,0.25), transparent 55%),
+      linear-gradient(160deg,#050d1e 0%, var(--navy) 45%, var(--navy-2) 100%);
+    color:#fff;
+    padding:5.5rem 1.5rem 5rem;
+    text-align:center;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity:0.4;
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-block; color:var(--cyan); background:rgba(34,211,238,0.1);
+    border:1px solid rgba(34,211,238,0.3); padding:0.35rem 1rem; border-radius:999px;
+    font-size:0.78rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:1.5rem; position:relative;
+  }
+  header h1{
+    margin:0 auto; max-width:920px; font-size:clamp(2rem, 4vw, 3rem);
+    font-weight:800; line-height:1.2; position:relative;
+  }
+  .subtitle{
+    color:#a9c1e8; font-size:1.15rem; margin:1.1rem auto 0; max-width:760px;
+    font-weight:400; position:relative;
+  }
+  .authors-row{
+    margin-top:2rem; display:flex; justify-content:center; gap:0.8rem; flex-wrap:wrap; position:relative;
+  }
+  .pill{
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+    color:#e2e8f0; padding:0.5rem 1.1rem; border-radius:999px; font-size:0.88rem; font-weight:500;
+  }
+  .pill strong{color:#fff;}
+  .hero-btns{margin-top:2.4rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative;}
 
-        /* Grid system for modules */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
-        .module-box { background: var(--bg); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--accent); }
-        .module-box h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; }
+  /* ---------- MAIN LAYOUT ---------- */
+  main{max-width:1180px; margin:0 auto; padding:0 1.5rem;}
+  section{scroll-margin-top:90px;}
+  .card{
+    background:var(--card); padding:2.6rem; border-radius:var(--radius);
+    border:1px solid var(--border); margin:3rem 0; box-shadow:var(--shadow);
+  }
+  .card-head{display:flex; align-items:center; gap:0.7rem; margin-bottom:0.4rem;}
+  .card-icon{
+    width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--blue), var(--cyan)); font-size:1.3rem; flex-shrink:0;
+  }
+  h2{color:var(--navy); font-size:1.55rem; font-weight:700; margin:0;}
+  .kicker{color:var(--muted); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin:0 0 0.3rem 3.2rem;}
+  .card > p{color:var(--ink); font-size:1rem;}
 
-        /* Pathway steps horizontal flow */
-        .pathway-flow { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        .step { display: flex; align-items: center; background: var(--accent-light); padding: 1rem 1.2rem; border-radius: 8px; font-weight: 500; color: var(--primary); border: 1px solid #dbeafe; }
-        .step-num { background: var(--accent); color: white; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 1.2rem; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; }
+  /* ---------- STATS ---------- */
+  .stats-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin:1.8rem 0;}
+  .stat-box{
+    background:linear-gradient(160deg,#eff6ff,#f8fbff); border:1px solid #dbeafe; border-radius:12px;
+    padding:1.4rem 1.1rem; text-align:center; transition:transform .15s;
+  }
+  .stat-box:hover{transform:translateY(-3px);}
+  .stat-num{font-family:'Sora',sans-serif; font-size:1.8rem; font-weight:800; color:var(--blue);}
+  .stat-label{font-size:0.82rem; color:var(--muted); margin-top:0.35rem;}
+  .root-cause{
+    background:#fef2f2; border-left:4px solid var(--danger); padding:1rem 1.3rem;
+    border-radius:10px; margin-top:1.6rem; color:#7f1d1d; font-size:0.95rem;
+  }
+  .root-cause strong{color:#b91c1c;}
 
-        /* Research Study Elements */
-        .research-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
-        .study-row { display: flex; gap: 2rem; background: #fafafa; border-radius: 10px; padding: 1.5rem; border: 1px solid var(--card-border); align-items: center; }
-        @media (max-width: 768px) { .study-row { flex-direction: column; align-items: flex-start; } .study-img { width: 100% !important; height: 200px !important; } }
-        .study-img { width: 220px; height: 160px; background: #e2e8f0; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1; font-size: 0.75rem; color: #64748b; text-align: center; padding: 0.5rem; }
-        .study-img img { width: 100%; height: 100%; object-fit: cover; }
-        .study-info h3 { margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1.2rem; }
-        .study-tag { background: #e0f2fe; color: #0369a1; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-        .study-ref { font-size: 0.8rem; color: #64748b; margin-top: 0.6rem; }
-        .study-ref a { color: var(--accent); text-decoration: none; }
-        .study-ref a:hover { text-decoration: underline; }
+  /* ---------- ARCHITECTURE ---------- */
+  .grid-3{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.4rem; margin-top:1.8rem;}
+  .module-box{
+    background:var(--bg); border-radius:14px; border:1px solid var(--border);
+    overflow:hidden; transition:transform .18s, box-shadow .18s;
+  }
+  .module-box:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+  .module-img{
+    width:100%; height:170px; background:#eef2f9; display:flex; align-items:center; justify-content:center;
+    padding:1rem; border-bottom:1px solid var(--border);
+  }
+  .module-img img{max-width:100%; max-height:100%; object-fit:contain;}
+  .module-body{padding:1.3rem 1.4rem;}
+  .module-body h3{margin:0 0 0.5rem; color:var(--navy); font-size:1.1rem;}
+  .module-body p{margin:0; font-size:0.92rem; color:var(--muted);}
 
-        /* Responsive Table */
-        .table-container { overflow-x: auto; margin-top: 1.5rem; border-radius: 8px; border: 1px solid var(--card-border); }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem; }
-        th { background: var(--primary); color: white; padding: 0.9rem; }
-        td { padding: 0.9rem; border-bottom: 1px solid var(--card-border); }
-        tr:nth-child(even) { background-color: var(--bg); }
-        .yes { color: var(--success); font-weight: bold; }
-        .no { color: #b91c1c; }
+  /* ---------- PATHWAY ---------- */
+  .pathway-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1.1rem; margin-top:1.8rem;}
+  .path-step{
+    background:var(--bg); border:1px solid var(--border); border-radius:14px; padding:1.2rem;
+    text-align:center; position:relative; transition:transform .18s;
+  }
+  .path-step:hover{transform:translateY(-4px);}
+  .path-step img{width:88px; height:88px; object-fit:contain; margin-bottom:0.6rem;}
+  .path-num{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    background:var(--blue); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;
+    box-shadow:0 3px 8px rgba(37,99,235,0.4);
+  }
+  .path-step h4{margin:0.3rem 0 0.2rem; font-size:0.92rem; color:var(--navy);}
+  .path-step p{margin:0; font-size:0.78rem; color:var(--muted);}
 
-        .btn-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-        .btn { background: var(--accent); color: white; padding: 0.8rem 1.8rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s; border: none; cursor: pointer; }
-        .btn:hover { background: #1d4ed8; }
-        .btn-alt { background: #475569; }
-        .btn-alt:hover { background: #334155; }
+  /* ---------- STUDIES ---------- */
+  .research-grid{display:flex; flex-direction:column; gap:1.4rem; margin-top:1.8rem;}
+  .study-row{
+    display:grid; grid-template-columns:220px 1fr; gap:1.8rem;
+    background:var(--bg); border:1px solid var(--border); border-radius:14px; padding:1.4rem; align-items:center;
+    transition:box-shadow .18s;
+  }
+  .study-row:hover{box-shadow:var(--shadow);}
+  @media (max-width:720px){ .study-row{grid-template-columns:1fr;} }
+  .study-img{
+    width:100%; height:150px; background:#fff; border-radius:10px; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .study-img img{width:100%; height:100%; object-fit:contain; padding:0.5rem;}
+  .study-tag{
+    display:inline-block; background:#e0f2fe; color:#0369a1; padding:0.22rem 0.65rem;
+    border-radius:6px; font-size:0.72rem; font-weight:700; letter-spacing:0.4px; margin-bottom:0.5rem;
+  }
+  .study-info h3{margin:0 0 0.5rem; color:var(--navy); font-size:1.15rem;}
+  .study-info p{margin:0 0 0.6rem; font-size:0.92rem; color:var(--ink);}
+  .study-ref{font-size:0.8rem; color:var(--muted);}
+  .study-ref a{color:var(--blue); text-decoration:none; font-weight:500;}
+  .study-ref a:hover{text-decoration:underline;}
 
-        .refs { font-size: 0.85rem; color: #64748b; margin-top: 1rem; }
-        .refs li { margin-bottom: 0.4rem; }
-        .refs a { color: var(--accent); }
+  /* ---------- TABLE ---------- */
+  .table-container{overflow-x:auto; margin-top:1.8rem; border-radius:14px; border:1px solid var(--border); box-shadow:var(--shadow);}
+  table{width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem; min-width:640px;}
+  th{background:var(--navy); color:#fff; padding:0.95rem 1.1rem; font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.4px;}
+  td{padding:0.9rem 1.1rem; border-bottom:1px solid var(--border);}
+  tbody tr:nth-child(even){background:#f9fbfe;}
+  tbody tr:last-child td{border-bottom:none;}
+  .yes{color:var(--success); font-weight:700;}
+  .no{color:var(--danger);}
 
-        footer { text-align: center; padding: 3rem 1.5rem; color: #94a3b8; font-size: 0.9rem; background: #0a192f; margin-top: 5rem; border-top: 4px solid var(--accent); }
-    </style>
+  /* ---------- BUTTONS ---------- */
+  .btn-container{display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.8rem;}
+  .btn{
+    background:linear-gradient(135deg, var(--blue), #1d4ed8); color:#fff; padding:0.85rem 1.7rem;
+    text-decoration:none; border-radius:10px; font-weight:600; font-size:0.95rem;
+    display:inline-flex; align-items:center; gap:0.5rem; border:none; cursor:pointer;
+    box-shadow:0 6px 16px -6px rgba(37,99,235,0.55); transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px -6px rgba(37,99,235,0.6);}
+  .btn-outline{
+    background:rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,0.35); box-shadow:none;
+  }
+  .btn-outline:hover{background:rgba(255,255,255,0.14);}
+  .btn-alt{background:linear-gradient(135deg,#475569,#334155); box-shadow:0 6px 16px -6px rgba(51,65,85,0.5);}
+
+  /* ---------- REGULATORY ---------- */
+  .reg-figure{width:100%; max-width:520px; display:block; margin:1.6rem auto 0; border-radius:12px; border:1px solid var(--border);}
+
+  /* ---------- REFERENCES ---------- */
+  .refs{padding-left:1.3rem; font-size:0.88rem; color:var(--muted);}
+  .refs li{margin-bottom:0.55rem;}
+  .refs a{color:var(--blue);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center; padding:3.5rem 1.5rem 2.5rem; color:#8ca0c2; font-size:0.85rem;
+    background:linear-gradient(160deg,var(--navy),#050d1e); margin-top:5rem;
+  }
+  footer .foot-brand{color:#fff; font-weight:700; margin-bottom:0.4rem; font-family:'Sora',sans-serif;}
+
+  ::selection{background:var(--blue-light); color:#fff;}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>BioArtificial Immune Liver (BAIL)</h1>
-        <div class="subtitle">A Smart Implantable Platform for Real-Time Hepatitis B Detection, Immune Activation, and Liver Regeneration</div>
-        <div class="authors">Presenters: Paras Goyal, Vansh Kamboj</div>
-        <div class="badge">B. Pharmacy 2nd Year</div>
-    </header>
+<nav>
+  <div class="nav-inner">
+    <div class="brand">BIO<span>ARTIFICIAL</span> LIVER</div>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#pathway">Pathway</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#comparison">Comparison</a>
+      <a href="#applications">Applications</a>
+      <a href="#references">References</a>
+    </div>
+  </div>
+</nav>
 
-    <main>
-        <!-- Abstract Section -->
-        <div class="card">
-            <h2>🔬 Project Abstract</h2>
-            <p>Chronic Hepatitis B virus (HBV) infection remains a major global health challenge, affecting approximately 296 million people worldwide and standing as a leading cause of liver cirrhosis and hepatocellular carcinoma. Although current antiviral therapies effectively suppress viral replication, they fail to eradicate covalently closed circular DNA (cccDNA), resulting in persistent infection, immune exhaustion, lifelong treatment, and disease recurrence. To address these limitations, we propose the BioArtificial Immune Liver (BAIL) — a conceptual smart implantable bioengineered platform that integrates regenerative medicine, immunotherapy, biosensing, and intelligent therapeutic control into a unified system.</p>
-            <p>BAIL is designed as a three-layer architecture comprising a Living Hepatic Tissue Module for continuous HBV biomarker detection and liver support, an Immune Surveillance and Activation Module incorporating engineered Kupffer cells, dendritic cells, natural killer cells, macrophages, and virus-specific cytotoxic T cells for targeted antiviral immunity, and a Smart Therapeutic Control Module integrating biosensors, AI-assisted decision-making, and microfluidic delivery for localized therapeutic intervention.</p>
-            <p>Unlike existing therapies, BAIL aims to combine real-time monitoring, localized immune modulation, continuous liver regeneration, and future integration with CRISPR-based cccDNA targeting to facilitate a functional cure — while minimizing systemic toxicity and reducing disease recurrence.</p>
+<header>
+  <div class="eyebrow">B. Pharmacy · Conceptual Research Poster</div>
+  <h1>BioArtificial Immune Liver (BAIL)</h1>
+  <div class="subtitle">A Smart Implantable Platform for Real-Time Hepatitis B Detection, Immune Activation, and Liver Regeneration</div>
+  <div class="authors-row">
+    <div class="pill">Presenters: <strong>Paras Goyal</strong> &amp; <strong>Vansh Kamboj</strong></div>
+    <div class="pill">B. Pharmacy, 2nd Year</div>
+  </div>
+  <div class="hero-btns">
+    <a href="BAIL_Poster.pdf" download class="btn">📄 Download Full Poster (PDF)</a>
+    <a href="#evidence" class="btn btn-outline">🔬 View the Evidence</a>
+  </div>
+</header>
 
-            <div class="stats-grid">
-                <div class="stat-box"><div class="stat-num">~296M</div><div class="stat-label">People living with chronic Hepatitis B worldwide (WHO, 2024)</div></div>
-                <div class="stat-box"><div class="stat-num">1.1M</div><div class="stat-label">Annual deaths from HBV-related cirrhosis and liver cancer</div></div>
-                <div class="stat-box"><div class="stat-num">&gt;80%</div><div class="stat-label">Patients require long-term antiviral therapy to suppress HBV</div></div>
-                <div class="stat-box"><div class="stat-num">&gt;$20B</div><div class="stat-label">Estimated global healthcare and economic burden of HBV management</div></div>
-            </div>
-            <div class="root-cause"><strong>Root cause:</strong> Persistent HBV cccDNA and impaired hepatic immune surveillance prevent complete viral clearance, resulting in chronic infection, progressive liver damage, and lifelong therapy.</div>
+<main>
+
+  <!-- ABSTRACT -->
+  <section id="abstract" class="card">
+    <div class="card-head"><div class="card-icon">🔬</div><h2>Project Abstract</h2></div>
+    <div class="kicker">The Problem &amp; Our Proposal</div>
+    <p>Chronic Hepatitis B virus (HBV) infection remains a major global health challenge, affecting approximately 296 million people worldwide and standing as a leading cause of liver cirrhosis and hepatocellular carcinoma. Although current antiviral therapies effectively suppress viral replication, they fail to eradicate covalently closed circular DNA (cccDNA), resulting in persistent infection, immune exhaustion, lifelong treatment, and disease recurrence.</p>
+    <p>To address these limitations, we propose the <strong>BioArtificial Immune Liver (BAIL)</strong> — a conceptual smart implantable bioengineered platform that integrates regenerative medicine, immunotherapy, biosensing, and intelligent therapeutic control into a unified system. BAIL is designed as a three-layer architecture: a Living Hepatic Tissue Module for continuous HBV biomarker detection and liver support, an Immune Surveillance and Activation Module for targeted antiviral immunity, and a Smart Therapeutic Control Module for AI-guided, localized intervention.</p>
+
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num">~296M</div><div class="stat-label">People living with chronic Hepatitis B worldwide (WHO, 2024)</div></div>
+      <div class="stat-box"><div class="stat-num">1.1M</div><div class="stat-label">Annual deaths from HBV-related cirrhosis and liver cancer</div></div>
+      <div class="stat-box"><div class="stat-num">&gt;80%</div><div class="stat-label">Patients require long-term antiviral therapy to suppress HBV</div></div>
+      <div class="stat-box"><div class="stat-num">&gt;$20B</div><div class="stat-label">Estimated global economic burden of HBV management</div></div>
+    </div>
+    <div class="root-cause"><strong>Root cause:</strong> Persistent HBV cccDNA and impaired hepatic immune surveillance prevent complete viral clearance — driving chronic infection, progressive liver damage, and lifelong therapy.</div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture" class="card">
+    <div class="card-head"><div class="card-icon">📐</div><h2>BAIL Architecture — Three-Layer Smart System</h2></div>
+    <div class="kicker">How the platform is built</div>
+    <div class="grid-3">
+      <div class="module-box">
+        <div class="module-img"><img src="assets/layer1.png" alt="Living Hepatic Tissue Module diagram"></div>
+        <div class="module-body">
+          <h3>Layer 1 · Living Hepatic Tissue</h3>
+          <p>Human iPSC-derived hepatocytes cultured within a biocompatible 3D scaffold to recreate the native liver microenvironment, enabling real-time detection of infected hepatocytes and continuous metabolic support.</p>
         </div>
-
-        <!-- System Architecture Section -->
-        <div class="card">
-            <h2>📐 BAIL Architecture: Three-Layer Smart System</h2>
-            <div class="grid-3">
-                <div class="module-box">
-                    <h3>Layer 1: Living Hepatic Tissue</h3>
-                    <p>Human iPSC-derived hepatocytes cultured within a biocompatible 3D scaffold to recreate the native liver microenvironment. Supported by endothelial cells and extracellular matrix components, this tissue continuously monitors HBV-specific biomarkers while maintaining essential hepatic functions — enabling real-time detection of infected hepatocytes and a regenerative foundation for personalized intervention.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Layer 2: Immune Surveillance</h3>
-                    <p>An engineered immune microenvironment for targeted viral elimination. Kupffer cells detect infected hepatocytes and present antigens; NK cells, cytotoxic T cells, and macrophages destroy infected cells and release antiviral mediators.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Layer 3: Smart Therapeutic Control</h3>
-                    <p>Integrated biosensors continuously measure viral load and inflammatory markers. Embedded AI algorithms analyze signals and decide the optimal immune or therapeutic intervention, while microfluidic channels deliver immune modulators and cytokines locally.</p>
-                </div>
-            </div>
+      </div>
+      <div class="module-box">
+        <div class="module-img"><img src="assets/layer2.png" alt="Immune Surveillance Module diagram"></div>
+        <div class="module-body">
+          <h3>Layer 2 · Immune Surveillance</h3>
+          <p>Engineered Kupffer cells, NK cells, cytotoxic T cells, and macrophages detect infected hepatocytes, present antigens, and destroy infected cells while releasing antiviral mediators.</p>
         </div>
-
-        <!-- Six Mechanistic Pathway Stages -->
-        <div class="card">
-            <h2>⚙️ Mechanistic Pathway: From Detection to Cure</h2>
-            <div class="pathway-flow">
-                <div class="step"><div class="step-num">1</div> HBV Detection — continuous biomarker monitoring via embedded biosensors</div>
-                <div class="step"><div class="step-num">2</div> Immune Recognition — engineered Kupffer &amp; dendritic cells activate adaptive immunity</div>
-                <div class="step"><div class="step-num">3</div> Targeted Immune Activation — niche cell orchestration and cytokine delivery</div>
-                <div class="step"><div class="step-num">4</div> Virus Elimination — targeted killing &amp; future CRISPR-based cccDNA disruption</div>
-                <div class="step"><div class="step-num">5</div> Liver Repair &amp; Regeneration — release of regenerative factors to counter fibrosis</div>
-                <div class="step"><div class="step-num">6</div> Immune Memory &amp; Protection — long-term autonomous memory T-cell surveillance</div>
-            </div>
+      </div>
+      <div class="module-box">
+        <div class="module-img"><img src="assets/layer3.png" alt="Smart Therapeutic Control Module diagram"></div>
+        <div class="module-body">
+          <h3>Layer 3 · Smart Therapeutic Control</h3>
+          <p>Integrated biosensors track viral load and inflammation. AI algorithms decide the optimal intervention, and microfluidic channels deliver immune modulators and cytokines locally.</p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Clinical & Scientific Research Foundations Section -->
-        <div class="card">
-            <h2>📚 Key Clinical &amp; Scientific Foundations</h2>
-            <p>The conceptual BAIL model is anchored in recent clinical trials and preclinical breakthroughs in bioartificial liver support, immunology, and regenerative organ engineering:</p>
+  <!-- PATHWAY -->
+  <section id="pathway" class="card">
+    <div class="card-head"><div class="card-icon">⚙️</div><h2>Mechanistic Pathway — From Detection to Cure</h2></div>
+    <div class="kicker">Six sequential stages of the closed-loop system</div>
+    <div class="pathway-grid">
+      <div class="path-step"><div class="path-num">1</div><img src="assets/step1.png" alt="HBV Detection"><h4>HBV Detection</h4><p>Continuous biomarker monitoring via embedded biosensors</p></div>
+      <div class="path-step"><div class="path-num">2</div><img src="assets/step2.png" alt="Immune Recognition"><h4>Immune Recognition</h4><p>Kupffer &amp; dendritic cells activate adaptive immunity</p></div>
+      <div class="path-step"><div class="path-num">3</div><img src="assets/step3.png" alt="Targeted Immune Activation"><h4>Immune Activation</h4><p>Niche cell orchestration and cytokine delivery</p></div>
+      <div class="path-step"><div class="path-num">4</div><img src="assets/step4.png" alt="Virus Elimination"><h4>Virus Elimination</h4><p>Targeted killing &amp; future CRISPR-based cccDNA disruption</p></div>
+      <div class="path-step"><div class="path-num">5</div><img src="assets/step5.png" alt="Liver Repair and Regeneration"><h4>Liver Regeneration</h4><p>Regenerative factors released to counter fibrosis</p></div>
+      <div class="path-step"><div class="path-num">6</div><img src="assets/step6.png" alt="Immune Memory and Protection"><h4>Immune Memory</h4><p>Long-term autonomous memory T-cell surveillance</p></div>
+    </div>
+  </section>
 
-            <div class="research-grid">
-                <!-- Research 1 -->
-                <div class="study-row">
-                    <div class="study-img">HepAssis2® device schematic</div>
-                    <div class="study-info">
-                        <span class="study-tag">CLINICAL TRIAL — PHASE I (2026)</span>
-                        <h3>HepAssis2® Bioartificial Liver System</h3>
-                        <p>A randomized, open-label phase 1 trial of the HepAssis2® bioartificial liver system in HBV-related acute-on-chronic liver failure (ACLF) patients, a high-endemic-HBV setting. It establishes real clinical demand for bioartificial systems that pair detoxification with active metabolic support — the same rationale behind BAIL's Living Hepatic Tissue Module.</p>
-                        <div class="study-ref">Zhong Z. et al. (2026). <em>Clin Transl Med</em>, 16(2), e70620. <a href="https://doi.org/10.1002/ctm2.70620" target="_blank" rel="noopener">doi.org/10.1002/ctm2.70620</a></div>
-                    </div>
-                </div>
+  <!-- EVIDENCE -->
+  <section id="evidence" class="card">
+    <div class="card-head"><div class="card-icon">📚</div><h2>Key Clinical &amp; Scientific Foundations</h2></div>
+    <div class="kicker">Published research underpinning the concept</div>
+    <p>The conceptual BAIL model is anchored in recent clinical trials and preclinical breakthroughs in bioartificial liver support, immunology, and regenerative organ engineering.</p>
 
-                <!-- Research 2 -->
-                <div class="study-row">
-                    <div class="study-img">UTOpiA tandem circuit</div>
-                    <div class="study-info">
-                        <span class="study-tag">PRECLINICAL BREAKTHROUGH (2025)</span>
-                        <h3>The UTOpiA Tandem Circuit (Takebe Group)</h3>
-                        <p>A dual-component whole-blood extracorporeal circuit combining an upstream granulocyte/monocyte apheresis column with a downstream bioreactor of HLA-depleted iPSC-derived liver organoids. In rodent ACLF/ALF models, roughly 88% of UTOpiA-treated animals survived versus about 12% of untreated controls — supporting BAIL's tandem immunomodulation-plus-hepatic-support strategy.</p>
-                        <div class="study-ref">Yamaguchi H. et al. (2025). <em>J Hepatol</em>, 84(2), 293–307. <a href="https://doi.org/10.1016/j.jhep.2025.08.038" target="_blank" rel="noopener">doi.org/10.1016/j.jhep.2025.08.038</a></div>
-                    </div>
-                </div>
-
-                <!-- Research 3 -->
-                <div class="study-row">
-                    <div class="study-img">Gene-edited porcine liver</div>
-                    <div class="study-info">
-                        <span class="study-tag">FDA-CLEARED TRIAL (2025)</span>
-                        <h3>Genetically Engineered Porcine Liver (Extracorporeal Bridging)</h3>
-                        <p>The FDA cleared the first clinical trial of a genetically engineered porcine liver (eGenesis' EGEN-5784) used with an extracorporeal liver cross-circulation system for ACLF patients. This establishes a real regulatory pathway for complex, macroscale bioartificial liver-support architectures — precedent relevant to BAIL's translational roadmap.</p>
-                        <div class="study-ref">eGenesis / OrganOx (2025). FDA IND clearance, April 2025. Reported in <em>STAT News</em> and <em>Clinical Trials Arena</em>.</div>
-                    </div>
-                </div>
-
-                <!-- Research 4 -->
-                <div class="study-row">
-                    <div class="study-img">hiHep-BAL device</div>
-                    <div class="study-info">
-                        <span class="study-tag">CLINICAL-GRADE DEVICE (2023–2026)</span>
-                        <h3>Clinical-Grade hiHep-BAL Device</h3>
-                        <p>A clinical-grade bioartificial liver built with human-induced hepatocytes (hiHeps) manufactured under GMP conditions at scale (~10¹⁰ cells). In an investigator-initiated study of patients after extended liver resection, hiHep-BAL was well tolerated and improved ammonia detoxification and liver regeneration; it is now in a phase 2 trial (NCT05989958) for ACLF — direct evidence that GMP-manufactured human hepatocytes can rescue liver function, as BAIL's Living Hepatic Tissue Module proposes.</p>
-                        <div class="study-ref">Wang Y. et al. (2023). <em>Cell Stem Cell</em>, 30(5). <a href="https://doi.org/10.1016/j.stem.2023.04.003" target="_blank" rel="noopener">cell.com/cell-stem-cell</a></div>
-                    </div>
-                </div>
-
-                <!-- Research 5 -->
-                <div class="study-row">
-                    <div class="study-img">Memory T-cell differentiation</div>
-                    <div class="study-info">
-                        <span class="study-tag">IMMUNOLOGY (2022)</span>
-                        <h3>Hepatic Immune Surveillance &amp; T-Cell Differentiation in HBV</h3>
-                        <p>HBV persistence results from impaired hepatic immune surveillance involving Kupffer cells, NK cells, and virus-specific CD8+ T cells. Restoring these pathways — including durable, self-renewing memory T-cell populations — forms the immunological basis of BAIL's Layer 2 Immune Surveillance Module.</p>
-                        <div class="study-ref">Iannacone M. &amp; Guidotti L.G. (2022). <em>Nat Rev Immunol</em>, 22(1), 19–32. <a href="https://doi.org/10.1038/s41577-021-00549-4" target="_blank" rel="noopener">doi.org/10.1038/s41577-021-00549-4</a></div>
-                    </div>
-                </div>
-            </div>
+    <div class="research-grid">
+      <div class="study-row">
+        <div class="study-img"><img src="assets/study2.png" alt="HepAssis2 bioartificial liver trial figure"></div>
+        <div class="study-info">
+          <span class="study-tag">CLINICAL TRIAL · PHASE I (2026)</span>
+          <h3>HepAssis2® Bioartificial Liver System</h3>
+          <p>A randomized, open-label phase 1 trial of the HepAssis2® bioartificial liver system in HBV-related acute-on-chronic liver failure (ACLF) patients in a high-endemic-HBV setting — establishing clinical demand for systems pairing detoxification with active metabolic support, echoing BAIL's Living Hepatic Tissue Module.</p>
+          <div class="study-ref">Zhong Z. et al. (2026). <em>Clin Transl Med</em>, 16(2), e70620. <a href="https://doi.org/10.1002/ctm2.70620" target="_blank" rel="noopener">doi.org/10.1002/ctm2.70620</a></div>
         </div>
+      </div>
 
-        <!-- Strategic Advantages Table -->
-        <div class="card">
-            <h2>📊 Strategic Advantages vs. Legacy Models</h2>
-            <p>BAIL is conceptually positioned to close gaps left by current standards of care:</p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr><th>Parameter</th><th>Antiviral Drugs</th><th>Immunotherapy</th><th>Liver Transplant</th><th>BAIL Platform</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>cccDNA Elimination</td><td class="no">❌ No</td><td class="no">❌ Limited</td><td class="yes">✅ Removed with liver</td><td class="yes">✅ Future CRISPR</td></tr>
-                        <tr><td>Immune Restoration</td><td class="no">❌ No</td><td>Partial</td><td class="no">❌ No</td><td class="yes">✅ Engineered</td></tr>
-                        <tr><td>Liver Regeneration</td><td class="no">❌ No</td><td class="no">❌ No</td><td class="yes">✅ Complete</td><td class="yes">✅ Continuous</td></tr>
-                        <tr><td>Real-Time Monitoring</td><td class="no">❌ No</td><td class="no">❌ No</td><td class="no">❌ No</td><td class="yes">✅ Integrated Biosensors</td></tr>
-                        <tr><td>Targeted Therapy</td><td>Moderate</td><td>High</td><td>Whole Organ</td><td class="yes">✅ Localized &amp; Precise</td></tr>
-                        <tr><td>Personalization</td><td>Low</td><td>Moderate</td><td>Low</td><td class="yes">✅ Patient-Specific</td></tr>
-                        <tr><td>Treatment Duration</td><td>Lifelong</td><td>Multiple Cycles</td><td>One-time Surgery</td><td class="yes">✅ Long-term Autonomous</td></tr>
-                        <tr><td>Disease Recurrence</td><td>Possible</td><td>Possible</td><td>Possible</td><td class="yes">✅ Reduced Risk</td></tr>
-                        <tr><td>Systemic Toxicity</td><td>Moderate</td><td>High</td><td>High</td><td class="yes">✅ Localized Therapy</td></tr>
-                    </tbody>
-                </table>
-            </div>
+      <div class="study-row">
+        <div class="study-img"><img src="assets/study3.png" alt="UTOpiA tandem circuit figure"></div>
+        <div class="study-info">
+          <span class="study-tag">PRECLINICAL BREAKTHROUGH (2025)</span>
+          <h3>The UTOpiA Tandem Circuit (Takebe Group)</h3>
+          <p>A dual-component whole-blood extracorporeal circuit combining upstream immune-cell apheresis with a downstream bioreactor of gene-edited liver organoids. In rodent ACLF/ALF models, ~88% of UTOpiA-treated animals survived versus ~12% of untreated controls, supporting BAIL's tandem immunomodulation-plus-hepatic-support strategy.</p>
+          <div class="study-ref">Yamaguchi H. et al. (2025). <em>J Hepatol</em>, 84(2), 293–307. <a href="https://doi.org/10.1016/j.jhep.2025.08.038" target="_blank" rel="noopener">doi.org/10.1016/j.jhep.2025.08.038</a></div>
         </div>
+      </div>
 
-        <!-- Regulatory & Market Landscape -->
-        <div class="card">
-            <h2>🏛️ Regulatory &amp; Market Landscape</h2>
-            <div class="grid-3">
-                <div class="module-box">
-                    <h3>FDA RMAT Pathway</h3>
-                    <p>Regenerative Medicine Advanced Therapy (RMAT) designation supports accelerated development of regenerative, cell-based, and tissue-engineered therapies for serious diseases with unmet medical needs.</p>
-                </div>
-                <div class="module-box">
-                    <h3>EMA ATMP Framework</h3>
-                    <p>Advanced Therapy Medicinal Products (ATMPs) provide the EU regulatory pathway for gene therapies, tissue-engineered products, and somatic cell therapies — a foundation for future bioartificial liver technologies.</p>
-                </div>
-                <div class="module-box">
-                    <h3>WHO Hepatitis Elimination Strategy</h3>
-                    <p>WHO aims to eliminate viral hepatitis as a public health threat by 2030, driving demand for innovative curative platforms beyond lifelong antiviral therapy.</p>
-                </div>
-            </div>
-            <p style="margin-top:1.5rem; font-size:0.9rem; color:#64748b;">Regenerative medicine and cell therapy markets are projected to see sustained double-digit growth through 2035, driven in part by precision HBV therapeutics and next-generation implantable platforms.</p>
+      <div class="study-row">
+        <div class="study-img"><img src="assets/study4.png" alt="Genetically engineered porcine liver figure"></div>
+        <div class="study-info">
+          <span class="study-tag">FDA-CLEARED TRIAL (2025)</span>
+          <h3>Genetically Engineered Porcine Liver (Extracorporeal Bridging)</h3>
+          <p>The FDA cleared the first clinical trial of a genetically engineered porcine liver used with an extracorporeal cross-circulation system for ACLF patients — real regulatory precedent for complex, macroscale bioartificial liver-support architectures like BAIL.</p>
+          <div class="study-ref">eGenesis / OrganOx (2025). FDA IND clearance, April 2025.</div>
         </div>
+      </div>
 
-        <!-- Applications -->
-        <div class="card">
-            <h2>🧭 Applications</h2>
-            <div class="grid-3">
-                <div class="module-box">
-                    <h3>Chronic HBV Management</h3>
-                    <p>Long-term implantable platform for continuous monitoring, immune activation, and functional control in chronic HBV patients.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Personalized Therapeutic Testing</h3>
-                    <p>Patient-specific liver model for evaluating antiviral drugs, immunotherapies, and combinatorial treatments with real-time response data.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Liver Regeneration &amp; Failure Support</h3>
-                    <p>Supports hepatic tissue regeneration, detoxification, and metabolic functions in acute liver failure and end-stage liver disease.</p>
-                </div>
-            </div>
+      <div class="study-row">
+        <div class="study-img"><img src="assets/study5.png" alt="hiHep-BAL clinical device figure"></div>
+        <div class="study-info">
+          <span class="study-tag">CLINICAL-GRADE DEVICE (2023–2026)</span>
+          <h3>Clinical-Grade hiHep-BAL Device</h3>
+          <p>A bioartificial liver built with GMP-manufactured human-induced hepatocytes (~10¹⁰ cells) improved ammonia detoxification and liver regeneration in a human pilot study, and is now in a phase 2 ACLF trial (NCT05989958) — direct evidence that manufactured human hepatocytes can rescue liver function.</p>
+          <div class="study-ref">Wang Y. et al. (2023). <em>Cell Stem Cell</em>, 30(5).</div>
         </div>
+      </div>
 
-        <!-- Future Directions -->
-        <div class="card">
-            <h2>🚀 Future Directions &amp; Conclusion</h2>
-            <div class="grid-3">
-                <div class="module-box">
-                    <h3>Gene Editing Integration</h3>
-                    <p>Incorporation of CRISPR/Cas systems for targeted removal of HBV cccDNA and prevention of viral relapse.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Smart Monitoring &amp; AI Optimization</h3>
-                    <p>Development of advanced biosensors and AI algorithms for real-time monitoring and adaptive therapeutic control.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Enhanced Tissue Engineering</h3>
-                    <p>Optimization of vascularization, scaffold design, and cell crosstalk to improve tissue maturation and long-term implant stability.</p>
-                </div>
-                <div class="module-box">
-                    <h3>Clinical Translation &amp; Scalability</h3>
-                    <p>Scaling manufacturing, ensuring long-term safety, and establishing regulatory pathways for clinical implementation.</p>
-                </div>
-            </div>
-            <p style="margin-top:1.5rem;">BAIL combines regenerative medicine, immunotherapy, biosensors, and bioelectronics into a single platform, requiring multidisciplinary GMP manufacturing and long-term clinical validation. Supported by emerging advances in liver organoids, immune microenvironment engineering, and regenerative medicine, this conceptual platform offers a multidisciplinary framework for next-generation precision therapeutics and a potential pathway toward autonomous, patient-specific management of chronic HBV infection.</p>
+      <div class="study-row">
+        <div class="study-img"><img src="assets/study1.png" alt="Hepatic immune microenvironment figure"></div>
+        <div class="study-info">
+          <span class="study-tag">IMMUNOLOGY (2022)</span>
+          <h3>Hepatic Immune Surveillance &amp; T-Cell Differentiation in HBV</h3>
+          <p>HBV persistence results from impaired hepatic immune surveillance involving Kupffer cells, NK cells, and virus-specific CD8+ T cells. Restoring these pathways — including durable memory T-cell populations — forms the immunological basis of BAIL's Layer 2 Immune Surveillance Module.</p>
+          <div class="study-ref">Iannacone M. &amp; Guidotti L.G. (2022). <em>Nat Rev Immunol</em>, 22(1), 19–32. <a href="https://doi.org/10.1038/s41577-021-00549-4" target="_blank" rel="noopener">doi.org/10.1038/s41577-021-00549-4</a></div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Interactive materials -->
-        <div class="card">
-            <h2>📥 Interactive Materials</h2>
-            <p>View the full poster or the underlying literature referenced above:</p>
-            <div class="btn-container">
-                <a href="#" class="btn">📄 Download HD Poster (PDF)</a>
-                <a href="#references" class="btn btn-alt">🔗 Jump to References</a>
-            </div>
-        </div>
+  <!-- COMPARISON -->
+  <section id="comparison" class="card">
+    <div class="card-head"><div class="card-icon">📊</div><h2>Strategic Advantages vs. Legacy Models</h2></div>
+    <div class="kicker">How BAIL compares to current standards of care</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Parameter</th><th>Antiviral Drugs</th><th>Immunotherapy</th><th>Liver Transplant</th><th>BAIL Platform</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>cccDNA Elimination</td><td class="no">✗ No</td><td class="no">✗ Limited</td><td class="yes">✓ Removed with liver</td><td class="yes">✓ Future CRISPR</td></tr>
+          <tr><td>Immune Restoration</td><td class="no">✗ No</td><td>Partial</td><td class="no">✗ No</td><td class="yes">✓ Engineered</td></tr>
+          <tr><td>Liver Regeneration</td><td class="no">✗ No</td><td class="no">✗ No</td><td class="yes">✓ Complete</td><td class="yes">✓ Continuous</td></tr>
+          <tr><td>Real-Time Monitoring</td><td class="no">✗ No</td><td class="no">✗ No</td><td class="no">✗ No</td><td class="yes">✓ Integrated Biosensors</td></tr>
+          <tr><td>Targeted Therapy</td><td>Moderate</td><td>High</td><td>Whole Organ</td><td class="yes">✓ Localized &amp; Precise</td></tr>
+          <tr><td>Personalization</td><td>Low</td><td>Moderate</td><td>Low</td><td class="yes">✓ Patient-Specific</td></tr>
+          <tr><td>Treatment Duration</td><td>Lifelong</td><td>Multiple Cycles</td><td>One-time Surgery</td><td class="yes">✓ Long-term Autonomous</td></tr>
+          <tr><td>Disease Recurrence</td><td>Possible</td><td>Possible</td><td>Possible</td><td class="yes">✓ Reduced Risk</td></tr>
+          <tr><td>Systemic Toxicity</td><td>Moderate</td><td>High</td><td>High</td><td class="yes">✓ Localized Therapy</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-        <!-- References -->
-        <div class="card" id="references">
-            <h2>📖 References</h2>
-            <ol class="refs">
-                <li>Sharma, S., Rawal, P., Kaur, S., &amp; Puria, R. (2023). Liver organoids as a primary human model to study HBV-mediated hepatocellular carcinoma: A review. <em>Experimental Cell Research</em>, 428(1), 113618. <a href="https://doi.org/10.1016/j.yexcr.2023.113618" target="_blank" rel="noopener">doi.org/10.1016/j.yexcr.2023.113618</a></li>
-                <li>Iannacone, M., &amp; Guidotti, L.G. (2022). Immunobiology and pathogenesis of hepatitis B virus infection. <em>Nature Reviews Immunology</em>, 22(1), 19–32. <a href="https://doi.org/10.1038/s41577-021-00549-4" target="_blank" rel="noopener">doi.org/10.1038/s41577-021-00549-4</a></li>
-                <li>Cao, D., Ge, J.-Y., Wang, Y., Oda, T., &amp; Zheng, Y.-W. (2021). Hepatitis B virus infection modeling using multi-cellular organoids derived from human induced pluripotent stem cells. <em>World Journal of Gastroenterology</em>, 27(29), 4784–4801. <a href="https://doi.org/10.3748/wjg.v27.i29.4784" target="_blank" rel="noopener">doi.org/10.3748/wjg.v27.i29.4784</a></li>
-                <li>Zhong, Z. et al. (2026). HepAssis2® bioartificial liver system in treating acute-on-chronic liver failure patients: findings from a phase 1 randomised, open-label clinical trial. <em>Clinical and Translational Medicine</em>, 16(2), e70620. <a href="https://doi.org/10.1002/ctm2.70620" target="_blank" rel="noopener">doi.org/10.1002/ctm2.70620</a></li>
-                <li>Yamaguchi, H. et al. (2025). Reversal of ACLF and ALF using whole blood extracorporeal system combining HLA-depleted liver organoids with granulocyte-monocyte apheresis (UTOpiA). <em>Journal of Hepatology</em>, 84(2), 293–307. <a href="https://doi.org/10.1016/j.jhep.2025.08.038" target="_blank" rel="noopener">doi.org/10.1016/j.jhep.2025.08.038</a></li>
-                <li>Wang, Y. et al. (2023). Reversal of liver failure using a bioartificial liver device implanted with clinical-grade human-induced hepatocytes. <em>Cell Stem Cell</em>, 30(5). <a href="https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(23)00084-X" target="_blank" rel="noopener">cell.com/cell-stem-cell</a></li>
-                <li>eGenesis &amp; OrganOx (2025). FDA clears IND for genetically engineered porcine liver (EGEN-5784) with extracorporeal liver cross-circulation system. Reported April 2025.</li>
-            </ol>
-        </div>
-    </main>
+  <!-- REGULATORY -->
+  <section class="card">
+    <div class="card-head"><div class="card-icon">🏛️</div><h2>Regulatory &amp; Market Landscape</h2></div>
+    <div class="kicker">The translational path forward</div>
+    <div class="grid-3">
+      <div class="module-box"><div class="module-body">
+        <h3>FDA RMAT Pathway</h3>
+        <p>Regenerative Medicine Advanced Therapy designation supports accelerated development of regenerative, cell-based, and tissue-engineered therapies for serious diseases.</p>
+      </div></div>
+      <div class="module-box"><div class="module-body">
+        <h3>EMA ATMP Framework</h3>
+        <p>Advanced Therapy Medicinal Products provide the EU regulatory pathway for gene therapies, tissue-engineered products, and somatic cell therapies.</p>
+      </div></div>
+      <div class="module-box"><div class="module-body">
+        <h3>WHO Hepatitis Elimination Strategy</h3>
+        <p>WHO aims to eliminate viral hepatitis as a public health threat by 2030 — driving demand for curative platforms beyond lifelong antiviral therapy.</p>
+      </div></div>
+    </div>
+    <img src="assets/regenerative.png" alt="Regenerative medicine market growth chart" class="reg-figure">
+  </section>
 
-    <footer>
-        BioArtificial Immune Liver (BAIL) Project Website © 2026. All Rights Reserved.
-    </footer>
+  <!-- APPLICATIONS -->
+  <section id="applications" class="card">
+    <div class="card-head"><div class="card-icon">🧭</div><h2>Applications</h2></div>
+    <div class="kicker">Where BAIL could be used</div>
+    <div class="grid-3">
+      <div class="module-box"><div class="module-body">
+        <h3>Chronic HBV Management</h3>
+        <p>Long-term implantable platform for continuous monitoring, immune activation, and functional control in chronic HBV patients.</p>
+      </div></div>
+      <div class="module-box"><div class="module-body">
+        <h3>Personalized Therapeutic Testing</h3>
+        <p>Patient-specific liver model for evaluating antiviral drugs, immunotherapies, and combinatorial treatments with real-time response data.</p>
+      </div></div>
+      <div class="module-box"><div class="module-body">
+        <h3>Liver Regeneration &amp; Failure Support</h3>
+        <p>Supports hepatic tissue regeneration, detoxification, and metabolic functions in acute liver failure and end-stage liver disease.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section class="card">
+    <div class="card-head"><div class="card-icon">🚀</div><h2>Future Directions &amp; Conclusion</h2></div>
+    <div class="kicker">What comes next</div>
+    <div class="grid-3">
+      <div class="module-box"><div class="module-body"><h3>Gene Editing Integration</h3><p>CRISPR/Cas systems for targeted removal of HBV cccDNA and prevention of viral relapse.</p></div></div>
+      <div class="module-box"><div class="module-body"><h3>Smart Monitoring &amp; AI</h3><p>Advanced biosensors and AI algorithms for real-time monitoring and adaptive therapeutic control.</p></div></div>
+      <div class="module-box"><div class="module-body"><h3>Enhanced Tissue Engineering</h3><p>Optimizing vascularization, scaffold design, and cell crosstalk for long-term implant stability.</p></div></div>
+      <div class="module-box"><div class="module-body"><h3>Clinical Translation</h3><p>Scaling manufacturing and establishing regulatory pathways for clinical implementation.</p></div></div>
+    </div>
+    <p style="margin-top:1.8rem;">BAIL combines regenerative medicine, immunotherapy, biosensors, and bioelectronics into a single platform, requiring multidisciplinary GMP manufacturing and long-term clinical validation. Supported by emerging advances in liver organoids, immune microenvironment engineering, and regenerative medicine, this conceptual platform offers a framework for next-generation precision therapeutics and a potential pathway toward autonomous, patient-specific management of chronic HBV infection.</p>
+    <div class="btn-container">
+      <a href="BAIL_Poster.pdf" download class="btn">📄 Download HD Poster (PDF)</a>
+      <a href="#references" class="btn btn-alt">🔗 Jump to References</a>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section id="references" class="card">
+    <div class="card-head"><div class="card-icon">📖</div><h2>References</h2></div>
+    <ol class="refs">
+      <li>Sharma, S., Rawal, P., Kaur, S., &amp; Puria, R. (2023). Liver organoids as a primary human model to study HBV-mediated hepatocellular carcinoma: A review. <em>Experimental Cell Research</em>, 428(1), 113618. <a href="https://doi.org/10.1016/j.yexcr.2023.113618" target="_blank" rel="noopener">doi.org/10.1016/j.yexcr.2023.113618</a></li>
+      <li>Iannacone, M., &amp; Guidotti, L.G. (2022). Immunobiology and pathogenesis of hepatitis B virus infection. <em>Nature Reviews Immunology</em>, 22(1), 19–32. <a href="https://doi.org/10.1038/s41577-021-00549-4" target="_blank" rel="noopener">doi.org/10.1038/s41577-021-00549-4</a></li>
+      <li>Cao, D., Ge, J.-Y., Wang, Y., Oda, T., &amp; Zheng, Y.-W. (2021). Hepatitis B virus infection modeling using multi-cellular organoids derived from human induced pluripotent stem cells. <em>World Journal of Gastroenterology</em>, 27(29), 4784–4801. <a href="https://doi.org/10.3748/wjg.v27.i29.4784" target="_blank" rel="noopener">doi.org/10.3748/wjg.v27.i29.4784</a></li>
+      <li>Zhong, Z. et al. (2026). HepAssis2® bioartificial liver system in treating acute-on-chronic liver failure patients: findings from a phase 1 randomised, open-label clinical trial. <em>Clinical and Translational Medicine</em>, 16(2), e70620. <a href="https://doi.org/10.1002/ctm2.70620" target="_blank" rel="noopener">doi.org/10.1002/ctm2.70620</a></li>
+      <li>Yamaguchi, H. et al. (2025). Reversal of ACLF and ALF using whole blood extracorporeal system combining HLA-depleted liver organoids with granulocyte-monocyte apheresis (UTOpiA). <em>Journal of Hepatology</em>, 84(2), 293–307. <a href="https://doi.org/10.1016/j.jhep.2025.08.038" target="_blank" rel="noopener">doi.org/10.1016/j.jhep.2025.08.038</a></li>
+      <li>Wang, Y. et al. (2023). Reversal of liver failure using a bioartificial liver device implanted with clinical-grade human-induced hepatocytes. <em>Cell Stem Cell</em>, 30(5).</li>
+      <li>eGenesis &amp; OrganOx (2025). FDA clears IND for genetically engineered porcine liver (EGEN-5784) with extracorporeal liver cross-circulation system. Reported April 2025.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-brand">BioArtificial Immune Liver (BAIL)</div>
+  Presenters: Paras Goyal &amp; Vansh Kamboj — B. Pharmacy, 2nd Year<br>
+  © 2026 BAIL Project. All Rights Reserved.
+</footer>
 
 </body>
 </html>
