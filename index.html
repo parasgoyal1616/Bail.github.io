@@ -12,6 +12,7 @@
             --text: #334155;
             --bg: #f8fafc;
             --card-border: #e2e8f0;
+            --success: #166534;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -24,41 +25,53 @@
         header {
             background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
             color: white;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
             text-align: center;
         }
-        h1 { margin: 0; font-size: 2rem; max-width: 900px; margin: 0 auto; line-height: 1.3; }
-        .subtitle { color: #38bdf8; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 500; }
-        .authors { color: #94a3b8; margin-top: 0.8rem; font-style: italic; font-size: 0.95rem; }
-        .badge { background: #1e293b; color: #f8fafc; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-top: 0.5rem; }
+        h1 { margin: 0; font-size: 2.2rem; max-width: 900px; margin: 0 auto; line-height: 1.3; }
+        .subtitle { color: #38bdf8; font-size: 1.2rem; margin-top: 0.6rem; font-weight: 500; }
+        .authors { color: #94a3b8; margin-top: 1rem; font-style: italic; font-size: 1rem; }
+        .badge { background: #1e293b; color: #f8fafc; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; display: inline-block; margin-top: 0.6rem; letter-spacing: 0.5px; }
         
-        main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid var(--card-border); margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--accent-light); padding-bottom: 0.5rem; margin-top: 0; font-size: 1.4rem; }
+        main { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .card { background: white; padding: 2.5rem; border-radius: 14px; border: 1px solid var(--card-border); margin-bottom: 2.5rem; box-shadow: 0 4px 15px rgba(10,25,47,0.04); transition: transform 0.2s ease; }
+        .card:hover { transform: translateY(-2px); }
+        h2 { color: var(--primary); border-bottom: 3px solid var(--accent-light); padding-bottom: 0.6rem; margin-top: 0; font-size: 1.6rem; display: flex; align-items: center; gap: 0.5rem; }
         
         /* Grid system for modules */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
-        .module-box { background: var(--bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); }
-        .module-box h3 { margin-top: 0; color: var(--primary); font-size: 1.1rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+        .module-box { background: var(--bg); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--accent); }
+        .module-box h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; }
 
         /* Pathway steps horizontal flow */
-        .pathway-flow { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
-        .step { display: flex; align-items: center; background: var(--accent-light); padding: 0.8rem 1rem; border-radius: 6px; font-weight: 500; color: var(--primary); }
-        .step-num { background: var(--accent); color: white; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 1rem; font-size: 0.85rem; flex-shrink: 0; }
+        .pathway-flow { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+        .step { display: flex; align-items: center; background: var(--accent-light); padding: 1rem 1.2rem; border-radius: 8px; font-weight: 500; color: var(--primary); border: 1px solid #dbeafe; }
+        .step-num { background: var(--accent); color: white; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 1.2rem; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; }
+
+        /* Research Study Elements */
+        .research-grid { display: flex; flex-direction: column; gap: 2rem; margin-top: 1.5rem; }
+        .study-row { display: flex; gap: 2rem; background: #fafafa; border-radius: 10px; padding: 1.5rem; border: 1px solid var(--card-border); align-items: center; }
+        @media (max-width: 768px) { .study-row { flex-direction: column; align-items: flex-start; } .study-img { width: 100% !important; height: 200px !important; } }
+        .study-img { width: 220px; height: 160px; background: #e2e8f0; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1; }
+        .study-img img { width: 100%; height: 100%; object-fit: cover; }
+        .study-info h3 { margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1.25rem; }
+        .study-tag { background: #e0f2fe; color: #0369a1; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
 
         /* Responsive Table */
-        .table-container { overflow-x: auto; margin-top: 1rem; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
-        th { background: var(--primary); color: white; padding: 0.75rem; }
-        td { padding: 0.75rem; border-bottom: 1px solid var(--card-border); }
+        .table-container { overflow-x: auto; margin-top: 1.5rem; border-radius: 8px; border: 1px solid var(--card-border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        th { background: var(--primary); color: white; padding: 1rem; }
+        td { padding: 1rem; border-bottom: 1px solid var(--card-border); }
         tr:nth-child(even) { background-color: var(--bg); }
-        .highlight-row { font-weight: bold; background-color: #f0fdf4 !important; color: #166534; }
+        .highlight-row { font-weight: bold; background-color: #f0fdf4 !important; color: var(--success); }
 
         .btn-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-        .btn { background: var(--accent); color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.95rem; display: inline-flex; align-items: center; }
+        .btn { background: var(--accent); color: white; padding: 0.8rem 1.8rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1rem; display: inline-flex; align-items: center; transition: background 0.2s; }
+        .btn:hover { background: #1d4ed8; }
         .btn-alt { background: #475569; }
+        .btn-alt:hover { background: #334155; }
         
-        footer { text-align: center; padding: 3rem 0; color: #64748b; font-size: 0.85rem; background: #0a192f; color: #94a3b8; margin-top: 4rem; }
+        footer { text-align: center; padding: 3rem 0; color: #94a3b8; font-size: 0.9rem; background: #0a192f; margin-top: 5rem; border-top: 4px solid var(--accent); }
     </style>
 </head>
 <body>
@@ -73,14 +86,14 @@
     <main>
         <!-- Abstract Section -->
         <div class="card">
-            <h2>Project Abstract</h2>
+            <h2>🔬 Project Abstract</h2>
             <p>Chronic Hepatitis B virus (HBV) infection remains a major global health challenge affecting approximately 296 million people worldwide and is a leading cause of liver cirrhosis and hepatocellular carcinoma. Although current antiviral therapies effectively suppress viral replication, they fail to eradicate covalently closed circular DNA (cccDNA), resulting in persistent infection, immune exhaustion, lifelong treatment, and disease recurrence. To address these limitations, we propose the BioArtificial Immune Liver (BAIL), a conceptual smart implantable bioengineered platform that integrates regenerative medicine, immunotherapy, biosensing, and intelligent therapeutic control into a unified system.</p>
-            <p>BAIL is designed as a three-layer architecture comprising a Living Hepatic Tissue Module for continuous HBV biomarker detection and liver support, an Immune Surveillance and Activation Module incorporating engineered Kupffer cells, dendritic cells, natural killer cells, macrophages, and virus-specific cytotoxic T cells for targeted antiviral immunity, and a Smart Therapeutic Control Module integrating biosensors, AI-assisted decision-making, and microfluidic delivery for localized therapeutic intervention.</p>
+            <p>BAIL is designed as a three-layer architecture comprising a Living Hepatic Tissue Module for continuous HBV biomarker detection and liver support, an Immune Surveillance and Activation Module incorporating engineered cells for targeted antiviral immunity, and a Smart Therapeutic Control Module integrating biosensors and AI-assisted decision-making for localized therapeutic intervention.</p>
         </div>
 
         <!-- System Architecture Section -->
         <div class="card">
-            <h2>BAIL Architecture: Three-Layer Smart System</h2>
+            <h2>📐 BAIL Architecture: Three-Layer Smart System</h2>
             <div class="grid-3">
                 <div class="module-box">
                     <h3>Layer 1: Living Hepatic Tissue</h3>
@@ -99,66 +112,29 @@
 
         <!-- Six Mechanistic Pathway Stages -->
         <div class="card">
-            <h2>Mechanistic Pathway: From Detection to Cure</h2>
+            <h2>⚙️ Mechanistic Pathway: From Detection to Cure</h2>
             <div class="pathway-flow">
                 <div class="step"><div class="step-num">1</div> Step 1: HBV Detection (Continuous biomarker monitoring via embedded biosensors)</div>
                 <div class="step"><div class="step-num">2</div> Step 2: Immune Recognition (Engineered Kupffer & Dendritic cells activate adaptive immunity)</div>
                 <div class="step"><div class="step-num">3</div> Step 3: Targeted Immune Activation (Niche cell orchestration and cytokine delivery)</div>
-                <div class="step"><div class="step-num">4</div> Step 4: Virus Elimination (Targeted elimination & crisp-based cccDNA disruption)</div>
+                <div class="step"><div class="step-num">4</div> Step 4: Virus Elimination (Targeted elimination & CRISPR-based cccDNA disruption)</div>
                 <div class="step"><div class="step-num">5</div> Step 5: Liver Repair & Regeneration (Release of regenerative factors to counter fibrosis)</div>
                 <div class="step"><div class="step-num">6</div> Step 6: Immune Memory & Protection (Long-term autonomous memory cell survival)</div>
             </div>
         </div>
 
-        <!-- Comparative Parameters Table -->
+        <!-- NEW: Clinical & Scientific Research Foundations Section -->
         <div class="card">
-            <h2>Why Current Models Fail vs. The BAIL Advantage</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Antiviral Drugs</th>
-                            <th>Immunotherapy</th>
-                            <th>Liver Transplant</th>
-                            <th>BAIL Platform</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>cccDNA Elimination</td>
-                            <td>❌ No</td>
-                            <td>❌ Limited</td>
-                            <td>✅ Removed with organ</td>
-                            <td><strong>✅ Future CRISPR</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Immune Restoration</td>
-                            <td>❌ No</td>
-                            <td>⚠️ Partial</td>
-                            <td>❌ No</td>
-                            <td><strong>✅ Engineered Cells</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Liver Regeneration</td>
-                            <td>❌ No</td>
-                            <td>❌ No</td>
-                            <td>✅ Complete</td>
-                            <td><strong>✅ Continuous Support</strong></td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td>Monitoring Mode</td>
-                            <td>Periodic Testing</td>
-                            <td>Periodic Testing</td>
-                            <td>Surgical Followups</td>
-                            <td>📊 Real-Time AI Biosensors</td>
-                        </tr>
-                        <tr>
-                            <td>Treatment Duration</td>
-                            <td>Lifelong</td>
-                            <td>Multiple Cycles</td>
-                            <td>One-time Surgery</td>
-                            <td>🔄 Autonomous Long-term</td>
-                        </tr>
-                        <tr>
-                            <td>Systemic Toxicity</td>
+            <h2>📚 Key Clinical & Scientific Foundations</h2>
+            <p>The conceptual model of the BAIL platform is directly supported by recent global clinical trials and breakthrough scientific research datasets:</p>
+            
+            <div class="research-grid">
+                <!-- Research 1 -->
+                <div class="study-row">
+                    <div class="study-img">
+                        <!-- To add a real image, upload 'study1.jpg' to GitHub and change src="study1.jpg" -->
+                        <img src="https://placeholder.com" alt="HepAssis2 Phase 1 Trial Graph">
+                    </div>
+                    <div class="study-info">
+                        <span class="study-tag">CLINICAL TRIAL (PHASE I)</span>
+                        <h3>1. HepAssis2® Bioartificial Liver Support System</h3>
